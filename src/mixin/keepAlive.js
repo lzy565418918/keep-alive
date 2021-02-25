@@ -14,10 +14,13 @@ function elCtrl (elString) {
 
 export default function (elString) {
   const elArr = elCtrl(elString)
+  console.log(elArr, 'elArr')
   if (!elArr) return {}
   const elRedis = {}
+  console.log('1elArr')
   return {
     beforeRouteEnter (to, from, next) {
+      console.log(to, 'to')
       const includeArr = store.getters.get_includeArr
       if (to.name && to.meta && to.meta._keepAlive_) {
         if (includeArr.indexOf(to.name) === -1) {
@@ -48,6 +51,7 @@ export default function (elString) {
       }
     },
     beforeRouteLeave (to, from, next) {
+      console.log(123)
       if (this.__name__) {
         const obj = {}
         if (Object.keys(elRedis).length !== 0) {
