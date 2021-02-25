@@ -31,18 +31,33 @@
     Iusto reiciendis in libero quia assumenda sunt omnis qui aut praesentium laboriosam labore sint amet a, pariatur quasi eligendi nam deleniti iste? Iure, placeat? Quae facilis quasi at accusantium impedit!
     Illo iure cum iusto odio voluptas maxime cupiditate distinctio adipisci vel veritatis dolores voluptate, earum perspiciatis odit nam suscipit veniam id dolorem rem, unde officiis voluptatum debitis delectus assumenda. Provident.
     Vitae, at! Odit accusantium, debitis accusamus tempora nobis officiis quo ut non amet molestiae eaque, animi perspiciatis laudantium autem a nemo atque aperiam officia ullam sapiente! Adipisci repellat nobis quidem?</p >
-    <button @click="$router.push('/about')">pushRouter</button >
+    <button @click="push">pushRouter</button >
   </div>
 </template>
 
 <script>
 import keepAlive from '../mixin/keepAlive'
+import { _toFixed_ } from '../assets/utils'
 
 export default {
   name: 'Home',
   mixins: [keepAlive(['.pele'])],
   created () {
-    console.log('created')
+    console.log('created', _toFixed_(3.45655, 3))
+  },
+  activated () {
+    console.log('缓存时调用')
+  },
+  methods: {
+    push () {
+      this.$router.push({
+        path: '/About',
+        query: {
+          a: 1,
+          b: '2'
+        }
+      })
+    }
   }
 }
 </script>
