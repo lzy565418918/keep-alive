@@ -1,0 +1,39 @@
+[class*='hairline'] {
+    &:after{
+        position: absolute;
+        box-sizing: border-box;
+        content: '';
+        pointer-events: none;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+        border: 0px solid #eee;
+        transform: scale(0.5);
+    }
+}
+
+.hairline {
+    &--top,
+    &--right,
+    &--bottom,
+    &--left,
+    &--surround {
+        position: relative;
+    }
+    &--top::after{
+        border-top-width: 1Px;
+    }
+    &--right::after{
+        border-right-width: 1Px;
+    }
+    &--bottom::after{
+        border-bottom-width: 1Px;
+    }
+    &--left::after{
+        border-left-width: 1Px;
+    }
+    &--surround::after{
+        border-width: 1Px;
+    }
+}
